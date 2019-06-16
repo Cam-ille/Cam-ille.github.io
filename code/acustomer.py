@@ -94,7 +94,7 @@ class Customer:
                 n = len(list_other_customers)
                 # 先用3個以內測試驗算，等沒問題後再將 3 改成 n
                 other_customers=random.sample(list_other_customers,random.randint(1, n))
-                print(other_customers)
+                # print(other_customers)
                 for customer in other_customers:
                     print(customer[0])
                     choose=random.choice(['buy in','sold out'])
@@ -125,15 +125,28 @@ class Customer:
             1. 查詢個人所有紀錄
             2. 依區間查詢個人紀錄
         """
-        db.list_record_by_account(self.account)
-        subopt = input('依區間查詢:1.       2.      exit.離開: ')
-        if subopt == 'exit':
-            break
-        elif subopt=='1':
-            pass
-        elif subopt=='2':
-            pass
-
+        import datetime
+        current_date = datetime.date.today()
+        while True :
+            subopt = input('1.查詢個人所有紀錄  2.依區間查詢個人紀錄(exit.離開): ')
+        # 1. 最近一月、最近一季、最近半年、最近一年
+        # 2. 輸入前後日期條件
+        # 上述方法都要用 BETWEEN 語法
+        # SELECT * FROM RECORD WHERE DATE_TIME BETWEEN ? AND ?
+            if subopt == 'exit':
+                break
+            elif subopt=='1':
+                db.list_record_by_account(self.account)
+            elif subopt=='2':
+                while True:
+                    opt = input('1.最近一月 2.最近一季 3.最近半年 4.最近一年 5.輸入日期(exit.離開):')
+                    days=(30,90,180,360)
+                    if opt == 'exit':
+                        break
+                    else:
+                        days=days[int(opt)-1]
+                        date_ago=current_date - datetime.timedelta(days)
+                    db.account_records_date(self.account,date_ago,current_date)
         return func_title
 
 # entry point

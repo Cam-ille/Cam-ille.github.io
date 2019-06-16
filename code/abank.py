@@ -69,15 +69,23 @@ class Bank:
                 3b. 依區間查詢個人紀錄
         """
         while True:
-            db.list_all_customer()
-            db.all_records()
+            import datetime
+            current_date = datetime.date.today()
+            # db.list_all_customer()
+            # db.all_records()
             subopt = input('1.依區間查詢 2.查詢個人交易紀錄 exit.離開: ')
             if subopt == 'exit':
                 break
             else:
                 if subopt=='1':
-                    date=input('請輸入日期:')
-                    db.records_date(date)
+                    opt = input('1.最近一月 2.最近一季 3.最近半年 4.最近一年(exit.離開):')
+                    days=(30,90,180,360)
+                    if opt == 'exit':
+                        break
+                    else:
+                        days=days[int(opt)-1]
+                        date_ago=current_date - datetime.timedelta(days)
+                    db.records_date(date_ago,current_date)
                 else:
                     while True:
                         account = input('請輸入帳號 (exit.離開): ')
@@ -85,6 +93,7 @@ class Bank:
                             break
                         else:
                             db.list_record_by_account(account)
+            print('-'*60)
         return func_title
 
 # entry point

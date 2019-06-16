@@ -194,9 +194,15 @@ class DB:
         all_rows = self.cur.fetchall()
         for row in all_rows:
             print(row)
-        return all_rows
 
-    def records_date(self, date):
-        self.cur.execute("SELECT * FROM RECORD WHERE DATE_TIME>=?",(date,))
-        records=self.cur.fetchall()
-        return records
+    def records_date(self, date, current_date):
+        self.cur.execute("SELECT * FROM RECORD WHERE DATE_TIME BETWEEN ? AND ?",(date,current_date,))
+        all_rows=self.cur.fetchall()
+        for row in all_rows:
+            print(row)
+    
+    def account_records_date(self, account, date, current_date):
+        self.cur.execute("SELECT * FROM RECORD WHERE ACCOUNT=? AND DATE_TIME BETWEEN ? AND ?",(account,date,current_date,))
+        all_rows=self.cur.fetchall()
+        for row in all_rows:
+            print(row)
