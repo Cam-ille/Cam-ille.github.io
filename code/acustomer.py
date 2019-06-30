@@ -140,13 +140,17 @@ class Customer:
             elif subopt=='2':
                 while True:
                     opt = input('1.最近一月 2.最近一季 3.最近半年 4.最近一年 5.輸入日期(exit.離開):')
-                    days=(30,90,180,360)
+                    days_opts = (30,90,180,365)
                     if opt == 'exit':
                         break
+                    elif opt =='5':
+                        date1=input('請輸入之前日期')
+                        date2=input('請輸入最近日期')
+                        db.account_input_date(self.account,date1,date2)
                     else:
-                        days=days[int(opt)-1]
-                        date_ago=current_date - datetime.timedelta(days)
-                    db.account_records_date(self.account,date_ago,current_date)
+                        days=days_opts[int(opt)-1]
+                        date_ago=current_date - datetime.timedelta(days=days)
+                        db.records_date(date_ago,current_date,self.account)
         return func_title
 
 # entry point

@@ -195,14 +195,25 @@ class DB:
         for row in all_rows:
             print(row)
 
-    def records_date(self, date, current_date):
-        self.cur.execute("SELECT * FROM RECORD WHERE DATE_TIME BETWEEN ? AND ?",(date,current_date,))
+    def records_date(self, date, current_date, account=''):
+        if account == '':
+            self.cur.execute("SELECT * FROM RECORD WHERE SUBSTR(DATE_TIME,1,10) BETWEEN ? AND ?",(date,current_date,))
+        else:
+            self.cur.execute("SELECT * FROM RECORD WHERE ACCOUNT=? AND SUBSTR(DATE_TIME,1,10) BETWEEN ? AND ?",(account,date,current_date,))
         all_rows=self.cur.fetchall()
+        currency_types = ['USD', 'HKD', 'EUR', 'JPY', 'CNY']
+        records_count = [0 for i in range(len(currency_types))]
+        # records_count = []
+        # for i in range(len(currency_types)):
+        #     records_count.append(0)
         for row in all_rows:
+            records_count[currency_types.index(row[2])]+=1
             print(row)
+        print(currency_types)
+        print(records_count)
     
-    def account_records_date(self, account, date, current_date):
-        self.cur.execute("SELECT * FROM RECORD WHERE ACCOUNT=? AND DATE_TIME BETWEEN ? AND ?",(account,date,current_date,))
+    def account_input_date(self, account, date1, date2):
+        self.cur.execute("SELECT * FROM RECORD WHERE SUBSTR(DATE_TIME,1,10) BETWEEN ? AND ?",(date1,date2,))
         all_rows=self.cur.fetchall()
         for row in all_rows:
             print(row)
