@@ -34,7 +34,7 @@ class Bank:
     def exchange_rate_inquiry(self, db, func_title):
         """ 匯率查詢
         """
-        print('幣別  ',' 買入 ',' 賣出')
+        print('幣別 ',' 買入 ',' 賣出')
         db.list_all_currency()
         return func_title
 
@@ -72,7 +72,7 @@ class Bank:
             import datetime
             current_date = datetime.date.today()
             # db.list_all_customer()
-            # db.all_records()
+            db.all_records()
             subopt = input('1.依區間查詢 2.查詢個人交易紀錄 exit.離開: ')
             if subopt == 'exit':
                 break

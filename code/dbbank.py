@@ -70,7 +70,7 @@ class DB:
         self.cur.execute("SELECT * FROM CURRENCY_RATE")
         all_rows = self.cur.fetchall()
         for row in all_rows:
-            print(row)
+            print('{:3} {:6} {:6}'.format(*row))
         return all_rows
 
     def list_currency_settings(self):
@@ -79,7 +79,7 @@ class DB:
         self.cur.execute("SELECT * FROM CURRENCY_RATE_SETTINGS")
         all_rows = self.cur.fetchall()
         for row in all_rows:
-            print(row)
+            print('{:3} {:6} {:6}'.format(*row))
         return all_rows
 
     def insert_or_update_currency_rate(self, currency, set_range1, set_range2, change_limit):
@@ -193,7 +193,7 @@ class DB:
         self.cur.execute("SELECT * FROM RECORD")
         all_rows = self.cur.fetchall()
         for row in all_rows:
-            print(row)
+            print('{:3} {:10} {:3} {:10} {:10} {:10} {:20}'.format(*row))
 
     def records_date(self, date, current_date, account=''):
         if account == '':
