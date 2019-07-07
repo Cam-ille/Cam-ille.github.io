@@ -19,7 +19,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
-          <h1 class="navbar-brand">TOEIC Words</h1>
+          <h1 class="navbar-brand">Currency Investment</h1>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -31,8 +31,8 @@
                   使用說明
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#atestcenter">測驗中心</a>
-                  <a class="dropdown-item" href="#aexaminee">參測考生</a>
+                  <a class="dropdown-item" href="#abank">銀行</a>
+                  <a class="dropdown-item" href="#acustomer">顧客</a>
                 </div>
               </li>
               <li class="nav-item"> <a class="nav-link" href="/code/">程式碼</a> </li>
@@ -52,31 +52,27 @@
             </div>
         </div>
 
-        <div class="page-section" id="atestcenter"></div>
-        <h3 class="text-center"><span>測驗中心</span></h3>
+        <div class="page-section" id="abank"></div>
+        <h3 class="text-center"><span>銀行</span></h3>
 
-        <h4 class="small-sec"><span>單字建檔查詢</span></h4>
+        <h4 class="small-sec"><span>匯率查詢</span></h4>
         <pre>
             <code class="html">
         ====================
-        測驗中心
+        銀行
         ====================
-        a:單字建檔查詢
-        b:選擇題型設定
-        c:填充題型設定
-        d:參測考生列表
-        e:測驗成績統計
-        f:個人成績查詢
+        a:匯率查詢
+        b:幣別匯率變動參數設定
+        c:顧客交易紀錄
         q:離開
         ====================
         請選擇: a
-        1.增修 2.查詢 3.刪除 4.列表 exit.離開: 1
-        單字數: 200
-        單字: new
-        定義: 新的
-        編號: 201  單字: new  定義: 新的
-
-        1.增修 2.查詢 3.刪除 4.列表 exit.離開:
+        幣別    買入   賣出
+        ('USD', 29.194, 30.976)
+        ('HKD', 2.167, 3.959)
+        ('EUR', 33.819, 35.509)
+        ('JPY', 0.242, 0.091)
+        ('CNY', 4.307, 4.635)
             </code>
         </pre>
         <ol class="note">
@@ -228,35 +224,29 @@
 
         <hr>
 
-        <div class="page-section" id="aexaminee"></div>
-        <h3 class="text-center"><span>參測考生</span></h3>
+        <div class="page-section" id="acustomer"></div>
+        <h3 class="text-center"><span>顧客</span></h3>
 
         <h4 class="small-sec"><span>登入．註冊</span></h4>
         <pre>
             <code class="html">
         ====================
-        參測考生 尚未登入
+        投資人 尚未登入
         ====================
         a:登入．註冊
-        b:選擇題測驗
-        c:填充題測驗
-        d:個人成績查詢
-        e:個人資料修改
-        f:亂數播放單字
+        b:買進/賣出
+        c:個人交易紀錄
         q:離開
         ====================
         請選擇: a
         請先登入或註冊
-        請輸入帳號: bug
-        全名: Bug Chang
-        性別(F.女性 M.男性): M
-        出生年: 1987
-        註冊成功，可立即參加測驗
+        請輸入帳號: kai
+        全名: Kai
             </code>
         </pre>
         <ol class="note">
           <li>登入直接輸入帳號，不需要密碼</li>
-          <li>註冊輸入：帳號、全名、性別、出生年</li>
+          <li>註冊輸入：帳號、全名</li>
         </ol>
 
         <h4 class="small-sec"><span>選擇題測驗</span></h4>
