@@ -34,7 +34,7 @@ class Bank:
     def exchange_rate_inquiry(self, db, func_title):
         """ 匯率查詢
         """
-        print('幣別 ',' 買入 ',' 賣出')
+        print('{:3} {:3} {:3}'.format('幣別','買入','賣出'))
         db.list_all_currency()
         return func_title
 
